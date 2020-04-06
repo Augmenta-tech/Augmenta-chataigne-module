@@ -8,7 +8,7 @@ This code has been tested on Chataigne 1.6.0
 
 */
 
-var numPeople = 0;
+var objectCount = 0;
 
 function init()
 {
@@ -22,18 +22,14 @@ function moduleParameterChanged(param)
 
 		if(local.parameters.singlePersonMode.getData() == "none")
 		{
-				script.log("foonone");
-
 			local.values.singlePerson.setCollapsed(true);
 			local.values.person0.setCollapsed(false);
 			local.values.person1.setCollapsed(false);
 			local.values.person2.setCollapsed(false);
 			local.values.person3.setCollapsed(false);
 			local.values.person4.setCollapsed(false);
+
 		} else {
-
-							script.log("foo");
-
 			local.values.singlePerson.setCollapsed(false);
 			local.values.person0.setCollapsed(true);
 			local.values.person1.setCollapsed(true);
@@ -47,13 +43,13 @@ function moduleParameterChanged(param)
 function oscEvent(address,args)
 {
 
-	if(address == "/au/scene")
+	if(address == "/scene")
 	{
 		setAugmentaScene(local.values.scene, args);
 
-	} else if(address == "/au/personUpdated" || address == "/au/personEntered")
+	} else if(address == "/object/update" || address == "/object/enter")
 	{
-		if(args[1] == 0) //args[1] = oid
+		if(args[2] == 0) //args[2] = oid
 		{
 			setAugmentaPerson(local.values.person0, args);
 
@@ -63,16 +59,16 @@ function oscEvent(address,args)
 				setAugmentaPerson(local.values.singlePerson, args);	
 			}
 			
-		} else if(args[1] == 1)
+		} else if(args[2] == 1)
 		{
 			setAugmentaPerson(local.values.person1, args);
-		} else if(args[1] == 2)
+		} else if(args[2] == 2)
 		{
 			setAugmentaPerson(local.values.person2, args);
-		} else if(args[1] == 3)
+		} else if(args[2] == 3)
 		{
 			setAugmentaPerson(local.values.person3, args);
-		} else if(args[1] == 4)
+		} else if(args[2] == 4)
 		{
 			setAugmentaPerson(local.values.person4, args);
 		}
@@ -83,9 +79,9 @@ function oscEvent(address,args)
 			updateNewest(args);
 		}
 
-	} else if(address == "/au/personWillLeave")
+	} else if(address == "/object/leave")
 	{
-		if(args[1] == 0) //args[1] = oid
+		if(args[2] == 0) //args[2] = oid
 		{
 			resetAugmentaPerson(local.values.person0, args);
 
@@ -95,16 +91,16 @@ function oscEvent(address,args)
 				resetAugmentaPerson(local.values.singlePerson, args);	
 			}
 			
-		} else if(args[1] == 1)
+		} else if(args[2] == 1)
 		{
 			resetAugmentaPerson(local.values.person1, args);
-		} else if(args[1] == 2)
+		} else if(args[2] == 2)
 		{
 			resetAugmentaPerson(local.values.person2, args);
-		} else if(args[1] == 3)
+		} else if(args[2] == 3)
 		{
 			resetAugmentaPerson(local.values.person3, args);
-		} else if(args[1] == 4)
+		} else if(args[2] == 4)
 		{
 			resetAugmentaPerson(local.values.person4, args);
 		}
@@ -120,21 +116,21 @@ function oscEvent(address,args)
 function setAugmentaPerson(person, args)
 {
 	person.hasData.set(true);
-	person.pid.set(args[0]);
-	person.oid.set(args[1]);
-	person.age.set(args[2]);
-	person.centroidX.set(args[3]);
-	person.centroidY.set(args[4]);
-	person.velocityX.set(args[5]);
-	person.velocityY.set(args[6]);
-	person.depth.set(args[7]);
-	person.boundingRectX.set(args[8]);
-	person.boundingRectY.set(args[9]);
-	person.boundingRectWidth.set(args[10]);
-	person.boundingRectHeight.set(args[11]);
-	person.highestX.set(args[12]);
-	person.highestY.set(args[13]);
-	person.highestZ.set(args[14]);
+	person.frame.set(args[0]);
+	person.id.set(args[1]);
+	person.oid.set(args[2]);
+	person.age.set(args[3]);
+	person.centroidX.set(args[4]);
+	person.centroidY.set(args[5]);
+	person.velocityX.set(args[6]);
+	person.velocityY.set(args[7]);
+	person.orientation.set(args[8]);
+	person.boundingRectX.set(args[9]);
+	person.boundingRectY.set(args[10]);
+	person.boundingRectWidth.set(args[11]);
+	person.boundingRectHeight.set(args[12]);
+	person.boundingRectRotation.set(args[13]);
+	person.height.set(args[14]);
 }
 
 function resetAugmentaPerson(person)
@@ -159,23 +155,28 @@ function resetAugmentaPerson(person)
 
 function setAugmentaScene(scene, args)
 {
-	scene.currentTime.set(args[0]);
-	scene.percentCovered.set(args[1]);
-	scene.numPeople.set(args[2]);
-	numPeople = args[2];
-	scene.averageMotionX.set(args[3]);
-	scene.averageMotionY.set(args[4]);
-	scene.width.set(args[5]);
-	scene.height.set(args[6]);
-	scene.depth.set(args[7]);
+	scene.frame.set(args[0]);
+	scene.objectCount.set(args[1]);
+	scene.width.set(args[2]);
+	scene.height.set(args[3]);
+}
+
+function setAugmentaFusion(fusion, args)
+{
+	scene.videoOutPixelWidth.set(args[0]);
+	scene.videoOutPixelHeight.set(args[1]);
+	scene.videoOutCoordX.set(args[2]);
+	scene.videoOutCoordY.set(args[2]);
+	scene.sceneCoordX.set(args[4]);
+	scene.sceneCoordY.set(args[5]);
 }
 
 function updateNewest(args)
 {
 
-	//script.log("num people : " + scene.numPeople);
+	//script.log("num people : " + scene.objectCount);
 
-	if(args[1] == (numPeople - 1)) // args[1] is oid
+	if(args[1] == (objectCount - 1)) // args[1] is oid
 	{
 		setAugmentaPerson(local.values.singlePerson, args);	
 	}
@@ -183,7 +184,7 @@ function updateNewest(args)
 
 function resetNewest(args)
 {
-	if(args[1] == (numPeople - 1)) // args[1] is oid
+	if(args[1] == (objectCount - 1)) // args[1] is oid
 	{
 		resetAugmentaPerson(local.values.singlePerson, args);	
 	}	
