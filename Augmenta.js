@@ -8,7 +8,7 @@ This code has been tested on Chataigne 1.6.0
 
 */
 
-// The module currently display 5 objects maximum
+// The module currently display 5 objects maximum declared in module.json
 var maxObjectsDisplayed = 5;
 
 function init()
