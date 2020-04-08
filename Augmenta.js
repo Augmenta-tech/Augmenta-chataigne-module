@@ -8,34 +8,35 @@ This code has been tested on Chataigne 1.6.0
 
 */
 
-var objectCount = 0;
+// The module currently display 5 objects maximum
+var maxObjectsDisplayed = 5;
 
 function init()
 {
 	local.parameters.pass_through.setCollapsed(true);
-	local.values.singlePerson.setCollapsed(true);
+	local.values.singleObject.setCollapsed(true);
+	local.values.fusion.setCollapsed(true);
+	local.scripts.setCollapsed(true);
+
+	for(var i = 0 ; i < maxObjectsDisplayed ; i++)
+	{	
+		local.values.getChild("object" + i).setCollapsed(true);
+	}
 }
 
 function moduleParameterChanged(param)
 {
-	if(param.is(local.parameters.singlePersonMode)) {
+	if(param.is(local.parameters.singleObjectMode)) {
 
-		if(local.parameters.singlePersonMode.getData() == "none")
+		if(local.parameters.singleObjectMode.getData() == "none")
 		{
-			local.values.singlePerson.setCollapsed(true);
-			local.values.person0.setCollapsed(false);
-			local.values.person1.setCollapsed(false);
-			local.values.person2.setCollapsed(false);
-			local.values.person3.setCollapsed(false);
-			local.values.person4.setCollapsed(false);
+			// Clean and fold single person object
+			local.values.singleObject.setCollapsed(true);
+			resetAugmentaObject(local.values.singleObject, args);
 
 		} else {
-			local.values.singlePerson.setCollapsed(false);
-			local.values.person0.setCollapsed(true);
-			local.values.person1.setCollapsed(true);
-			local.values.person2.setCollapsed(true);
-			local.values.person3.setCollapsed(true);
-			local.values.person4.setCollapsed(true);
+			// Unfold single person object panel
+			local.values.singleObject.setCollapsed(false);
 		}
 	}
 }
@@ -47,110 +48,112 @@ function oscEvent(address,args)
 	{
 		setAugmentaScene(local.values.scene, args);
 
-	} else if(address == "/object/update" || address == "/object/enter")
+	} else if(address == "/object/update")
 	{
-		if(args[2] == 0) //args[2] = oid
-		{
-			setAugmentaPerson(local.values.person0, args);
 
-			// Oldest is always oid = 0 if algo is correctly implemented
-			if(local.parameters.singlePersonMode.getData() == "oldest")
-			{
-				setAugmentaPerson(local.values.singlePerson, args);	
-			}
-			
-		} else if(args[2] == 1)
+		// Update objects
+		for(var i = 0 ; i < maxObjectsDisplayed ; i++)
 		{
-			setAugmentaPerson(local.values.person1, args);
-		} else if(args[2] == 2)
-		{
-			setAugmentaPerson(local.values.person2, args);
-		} else if(args[2] == 3)
-		{
-			setAugmentaPerson(local.values.person3, args);
-		} else if(args[2] == 4)
-		{
-			setAugmentaPerson(local.values.person4, args);
+			 if(args[2] == i) // //args[2] = oid
+			 {
+ 				setAugmentaObject(local.values.getChild("object" + i), args);
+			 }
 		}
 
-		// Check and udate newest
-		if(local.parameters.singlePersonMode.getData() == "newest")
+		// Update Oldest and newest
+		// Oldest is always oid = 0 if algo is correctly implemented
+		if(local.parameters.singleObjectMode.getData() == "oldest" && args[2] == 0)
 		{
-			updateNewest(args);
+			setAugmentaObject(local.values.singleObject, args);
+
+		} else if(local.parameters.singleObjectMode.getData() == "newest" && args[2] == getNewestId())
+		{
+
+			setAugmentaObject(local.values.singleObject, args);
+
+		}
+
+	} else if(address == "/object/enter")
+	{
+		// Update objects
+		for(var i = 0 ; i < maxObjectsDisplayed ; i++)
+		{
+			 if(args[2] == i) // //args[2] = oid
+			 {
+ 				local.values.getChild("object" + i).setCollapsed(false);
+ 				setAugmentaObject(local.values.getChild("object" + i), args);
+			 }
+		}
+
+		// Update Oldest and newest
+		// Oldest is always oid = 0 if algo is correctly implemented
+		if(local.parameters.singleObjectMode.getData() == "oldest" && args[2] == 0)
+		{
+			setAugmentaObject(local.values.singleObject, args);
+
+		} else if(local.parameters.singleObjectMode.getData() == "newest" && args[2] == getNewestId())
+		{
+			setAugmentaObject(local.values.singleObject, args);
 		}
 
 	} else if(address == "/object/leave")
 	{
-		if(args[2] == 0) //args[2] = oid
+		
+		for(var i = 0 ; i < maxObjectsDisplayed ; i++)
 		{
-			resetAugmentaPerson(local.values.person0, args);
-
-			// Oldest is always oid = 0 if algo is correctly implemented
-			if(local.parameters.singlePersonMode.getData() == "oldest")
-			{
-				resetAugmentaPerson(local.values.singlePerson, args);	
-			}
-			
-		} else if(args[2] == 1)
-		{
-			resetAugmentaPerson(local.values.person1, args);
-		} else if(args[2] == 2)
-		{
-			resetAugmentaPerson(local.values.person2, args);
-		} else if(args[2] == 3)
-		{
-			resetAugmentaPerson(local.values.person3, args);
-		} else if(args[2] == 4)
-		{
-			resetAugmentaPerson(local.values.person4, args);
+			 if(args[2] == i) // //args[2] = oid
+			 {
+ 				local.values.getChild("object" + i).setCollapsed(true);
+ 				resetAugmentaObject(local.values.getChild("object" + i), args);
+			 }
 		}
 
-		// Check and update newest
-		if(local.parameters.singlePersonMode.getData() == "newest")
+		// Reset Oldest and newest
+		// Oldest is always oid = 0 if algo is correctly implemented
+		if(local.parameters.singleObjectMode.getData() == "oldest" && args[2] == 0)
 		{
-			resetNewest(args);
+			resetAugmentaObject(local.values.singleObject);
+
+		} else if(local.parameters.singleObjectMode.getData() == "newest" && args[2] == getNewestId())
+		{
+			
+			resetAugmentaObject(local.values.singleObject);
 		}
 	}
 }
 
-function setAugmentaPerson(person, args)
+function setAugmentaObject(object, args)
 {
-	person.hasData.set(true);
-	person.frame.set(args[0]);
-	person.id.set(args[1]);
-	person.oid.set(args[2]);
-	person.age.set(args[3]);
-	person.centroidX.set(args[4]);
-	person.centroidY.set(args[5]);
-	person.velocityX.set(args[6]);
-	person.velocityY.set(args[7]);
-	person.orientation.set(args[8]);
-	person.boundingRectX.set(args[9]);
-	person.boundingRectY.set(args[10]);
-	person.boundingRectWidth.set(args[11]);
-	person.boundingRectHeight.set(args[12]);
-	person.boundingRectRotation.set(args[13]);
-	person.height.set(args[14]);
+	object.hasData.set(true);
+	object.frame.set(args[0]);
+	object.id.set(args[1]);
+	object.oid.set(args[2]);
+	object.age.set(args[3]);
+	object.centroid.set(args[4],args[5]);
+	object.velocity.set(args[6],args[7]);
+	object.orientation.set(args[8]);
+	object.boundingRectCoord.set(args[9],args[10]);
+	object.boundingRectWidth.set(args[11]);
+	object.boundingRectHeight.set(args[12]);
+	object.boundingRectRotation.set(args[13]);
+	object.height.set(args[14]);
 }
 
-function resetAugmentaPerson(person)
+function resetAugmentaObject(object)
 {
-	person.hasData.set(false);
-	/*person.pid.set(-1);
-	person.oid.set(-1);
-	person.age.set(0);
-	person.centroidX.set(0);
-	person.centroidY.set(0);
-	person.velocityX.set(0);
-	person.velocityY.set(0);
-	person.depth.set(0);
-	person.boundingRectX.set(0);
-	person.boundingRectY.set(0);
-	person.boundingRectWidth.set(0);
-	person.boundingRectHeight.set(0);
-	person.highestX.set(0);
-	person.highestY.set(0);
-	person.highestZ.set(0);*/
+	object.hasData.set(false);
+	object.frame.set(0);
+	object.id.set(0);
+	object.oid.set(0);
+	object.age.set(0);
+	object.centroid.set(0,0);
+	object.velocity.set(0,0);
+	object.orientation.set(0);
+	object.boundingRectCoord.set(0,0);
+	object.boundingRectWidth.set(0);
+	object.boundingRectHeight.set(0);
+	object.boundingRectRotation.set(0);
+	object.height.set(0);
 }
 
 function setAugmentaScene(scene, args)
@@ -165,27 +168,33 @@ function setAugmentaFusion(fusion, args)
 {
 	scene.videoOutPixelWidth.set(args[0]);
 	scene.videoOutPixelHeight.set(args[1]);
-	scene.videoOutCoordX.set(args[2]);
-	scene.videoOutCoordY.set(args[2]);
-	scene.sceneCoordX.set(args[4]);
-	scene.sceneCoordY.set(args[5]);
+	scene.videoOutCoord.x.set(args[2]);
+	scene.videoOutCoord.y.set(args[2]);
+	scene.sceneCoord.x.set(args[4]);
+	scene.sceneCoord.y.set(args[5]);
 }
 
-function updateNewest(args)
+function getNewestId(args)
 {
-
-	//script.log("num people : " + scene.objectCount);
-
-	if(args[1] == (objectCount - 1)) // args[1] is oid
+	if(local.values.scene.objectCount.get() > 0)
 	{
-		setAugmentaPerson(local.values.singlePerson, args);	
+		if(local.values.scene.objectCount.get() == 1)
+		{
+			// Newest is the only object
+			return 0;
+		} else if (local.values.scene.objectCount.get() == 2)
+		{
+			// Newest is the second object
+			return 1;
+		} else if (local.values.scene.objectCount.get() > 2)
+		{
+			// TODO : detect which one is newest
+			return 2;
+		}
+
+	} else
+	{
+		// no object in the scene
+		return -1;
 	}
-}
-
-function resetNewest(args)
-{
-	if(args[1] == (objectCount - 1)) // args[1] is oid
-	{
-		resetAugmentaPerson(local.values.singlePerson, args);	
-	}	
 }

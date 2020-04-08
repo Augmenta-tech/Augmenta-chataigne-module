@@ -3,7 +3,7 @@
 	"type":"OSC",
 	"path":"Theoriz",
 	
-	"version":"1.0.0",
+	"version":"1.1.0",
 	"description":"Get tracking data from THEORIZ's Augmenta tracking system v2",
 	"url":"https://github.com/Theoriz/Augmenta-chataigne-module_v2",
 	"downloadURL":"https://github.com/Theoriz/Augmenta-chataigne-module_v2/archive/master.zip",
@@ -15,7 +15,7 @@
 
 	"parameters":
 	{
-		"Single Person Mode":
+		"Single Object Mode":
 		{
 			"type":"Enum",
 			"options":
@@ -47,48 +47,56 @@
 		{
 			"type":"Container",
 
-			"currentTime":
+			"frame":
 			{
 				"type":"Integer",
 				"min":0
 			},
-			"percentCovered":
-			{
-				"type":"Float",
-				"min":0,
-				"max":1
-			},
-			"numPeople":
+			"objectCount":
 			{
 				"type":"Integer",
 				"min":0
-			},
-			"averageMotionX":
-			{
-				"type":"Float"
-			},
-			"averageMotionY":
-			{
-				"type":"Float"
 			},
 			"width":
 			{
-				"type":"Integer",
+				"type":"Float",
 				"min":0
 			},
 			"height":
 			{
+				"type":"Float",
+				"min":0
+			}
+		},
+		"Fusion":
+		{
+			"type":"Container",
+
+			"videOutPixelWidth":
+			{
 				"type":"Integer",
 				"min":0
 			},
-			"depth":
+			"videoOutPixelHeight":
 			{
 				"type":"Integer",
+				"min":0
+			},
+			"videoOutCoord":
+			{
+				"type":"Point2D",
+				"min":0,
+				"min":0
+			},
+			"SceneOutCoord":
+			{
+				"type":"Point2D",
+				"min":0,
 				"min":0
 			}
 		},
 
-		"Single Person":
+		"Single Object":
 		{
 			"type":"Container",
 
@@ -97,7 +105,12 @@
 				"type":"Boolean",
 				"ReadOnly":true,
 			},
-			"pid":
+			"frame":
+			{
+				"type":"Integer",
+				"min":0
+			},
+			"id":
 			{
 				"type":"Integer",
 				"min":0
@@ -110,42 +123,32 @@
 			"age":
 			{
 
-				"type":"Integer",
+				"type":"Float",
 				"min":0
 			},
-			"centroidX":
+			"centroid":
 			{
-				"type":"Float",
+				"type":"Point2D",
+				"min":0,
+				"max":1,
 				"min":0,
 				"max":1
 			},
-			"centroidY":
+			"velocity":
 			{
-				"type":"Float"
+				"type":"Point2D"
 			},
-			"velocityX":
-			{
-				"type":"Float"
-			},
-			"velocityY":
-			{
-				"type":"Float"
-			},
-			"depth":
+			"orientation":
 			{
 				"type":"Float",
 				"min":0,
-				"max":1
+				"max":360
 			},
-			"boundingRectX":
+			"boundingRectCoord":
 			{
-				"type":"Float",
+				"type":"Point2D",
 				"min":0,
-				"max":1
-			},
-			"boundingRectY":
-			{
-				"type":"Float",
+				"max":1,
 				"min":0,
 				"max":1
 			},
@@ -158,30 +161,22 @@
 			"boundingRectHeight":
 			{
 				"type":"Float",
-				"min":0,
-				"max":1
+				"min":0
 			},
-			"HighestX":
+			"boundingRectRotation":
 			{
 				"type":"Float",
 				"min":0,
-				"max":1
+				"max":360
 			},
-			"HighestY":
+			"Height":
 			{
 				"type":"Float",
-				"min":0,
-				"max":1
-			},
-			"HighestZ":
-			{
-				"type":"Float",
-				"min":0,
-				"max":1
+				"min":0
 			}
 		},
 
-		"Person 0":
+		"Object 0":
 		{
 			"type":"Container",
 
@@ -190,7 +185,12 @@
 				"type":"Boolean",
 				"ReadOnly":true,
 			},
-			"pid":
+			"frame":
+			{
+				"type":"Integer",
+				"min":0
+			},
+			"id":
 			{
 				"type":"Integer",
 				"min":0
@@ -203,48 +203,32 @@
 			"age":
 			{
 
-				"type":"Integer",
+				"type":"Float",
 				"min":0
 			},
-			"centroidX":
+			"centroid":
 			{
-				"type":"Float",
+				"type":"Point2D",
+				"min":0,
+				"max":1,
 				"min":0,
 				"max":1
 			},
-			"centroidY":
+			"velocity":
+			{
+				"type":"Point2D"
+			},
+			"orientation":
 			{
 				"type":"Float",
 				"min":0,
-				"max":1
+				"max":360
 			},
-			"velocityX":
+			"boundingRectCoord":
 			{
-				"type":"Float",
-				"min":-1,
-				"max":1
-			},
-			"velocityY":
-			{
-				"type":"Float",
-				"min":-1,
-				"max":1
-			},
-			"depth":
-			{
-				"type":"Float",
+				"type":"Point2D",
 				"min":0,
-				"max":1
-			},
-			"boundingRectX":
-			{
-				"type":"Float",
-				"min":0,
-				"max":1
-			},
-			"boundingRectY":
-			{
-				"type":"Float",
+				"max":1,
 				"min":0,
 				"max":1
 			},
@@ -257,30 +241,22 @@
 			"boundingRectHeight":
 			{
 				"type":"Float",
-				"min":0,
-				"max":1
+				"min":0
 			},
-			"HighestX":
+			"boundingRectRotation":
 			{
 				"type":"Float",
 				"min":0,
-				"max":1
+				"max":360
 			},
-			"HighestY":
+			"Height":
 			{
 				"type":"Float",
-				"min":0,
-				"max":1
-			},
-			"HighestZ":
-			{
-				"type":"Float",
-				"min":0,
-				"max":1
+				"min":0
 			}
 		},
 
-		"Person 1":
+		"Object 1":
 		{
 			"type":"Container",
 
@@ -289,7 +265,12 @@
 				"type":"Boolean",
 				"ReadOnly":true,
 			},
-			"pid":
+			"frame":
+			{
+				"type":"Integer",
+				"min":0
+			},
+			"id":
 			{
 				"type":"Integer",
 				"min":0
@@ -302,48 +283,32 @@
 			"age":
 			{
 
-				"type":"Integer",
+				"type":"Float",
 				"min":0
 			},
-			"centroidX":
+			"centroid":
 			{
-				"type":"Float",
+				"type":"Point2D",
+				"min":0,
+				"max":1,
 				"min":0,
 				"max":1
 			},
-			"centroidY":
+			"velocity":
+			{
+				"type":"Point2D"
+			},
+			"orientation":
 			{
 				"type":"Float",
 				"min":0,
-				"max":1
+				"max":360
 			},
-			"velocityX":
+			"boundingRectCoord":
 			{
-				"type":"Float",
-				"min":-1,
-				"max":1
-			},
-			"velocityY":
-			{
-				"type":"Float",
-				"min":-1,
-				"max":1
-			},
-			"depth":
-			{
-				"type":"Float",
+				"type":"Point2D",
 				"min":0,
-				"max":1
-			},
-			"boundingRectX":
-			{
-				"type":"Float",
-				"min":0,
-				"max":1
-			},
-			"boundingRectY":
-			{
-				"type":"Float",
+				"max":1,
 				"min":0,
 				"max":1
 			},
@@ -356,30 +321,22 @@
 			"boundingRectHeight":
 			{
 				"type":"Float",
-				"min":0,
-				"max":1
+				"min":0
 			},
-			"HighestX":
+			"boundingRectRotation":
 			{
 				"type":"Float",
 				"min":0,
-				"max":1
+				"max":360
 			},
-			"HighestY":
+			"Height":
 			{
 				"type":"Float",
-				"min":0,
-				"max":1
-			},
-			"HighestZ":
-			{
-				"type":"Float",
-				"min":0,
-				"max":1
+				"min":0
 			}
 		},
-
-		"Person 2":
+		
+		"Object 2":
 		{
 			"type":"Container",
 
@@ -387,9 +344,13 @@
 			{
 				"type":"Boolean",
 				"ReadOnly":true,
-
 			},
-			"pid":
+			"frame":
+			{
+				"type":"Integer",
+				"min":0
+			},
+			"id":
 			{
 				"type":"Integer",
 				"min":0
@@ -402,48 +363,32 @@
 			"age":
 			{
 
-				"type":"Integer",
+				"type":"Float",
 				"min":0
 			},
-			"centroidX":
+			"centroid":
 			{
-				"type":"Float",
+				"type":"Point2D",
+				"min":0,
+				"max":1,
 				"min":0,
 				"max":1
 			},
-			"centroidY":
+			"velocity":
+			{
+				"type":"Point2D"
+			},
+			"orientation":
 			{
 				"type":"Float",
 				"min":0,
-				"max":1
+				"max":360
 			},
-			"velocityX":
+			"boundingRectCoord":
 			{
-				"type":"Float",
-				"min":-1,
-				"max":1
-			},
-			"velocityY":
-			{
-				"type":"Float",
-				"min":-1,
-				"max":1
-			},
-			"depth":
-			{
-				"type":"Float",
+				"type":"Point2D",
 				"min":0,
-				"max":1
-			},
-			"boundingRectX":
-			{
-				"type":"Float",
-				"min":0,
-				"max":1
-			},
-			"boundingRectY":
-			{
-				"type":"Float",
+				"max":1,
 				"min":0,
 				"max":1
 			},
@@ -456,30 +401,22 @@
 			"boundingRectHeight":
 			{
 				"type":"Float",
-				"min":0,
-				"max":1
+				"min":0
 			},
-			"HighestX":
+			"boundingRectRotation":
 			{
 				"type":"Float",
 				"min":0,
-				"max":1
+				"max":360
 			},
-			"HighestY":
+			"Height":
 			{
 				"type":"Float",
-				"min":0,
-				"max":1
-			},
-			"HighestZ":
-			{
-				"type":"Float",
-				"min":0,
-				"max":1
+				"min":0
 			}
 		},
 
-		"Person 3":
+		"Object 3":
 		{
 			"type":"Container",
 
@@ -488,7 +425,12 @@
 				"type":"Boolean",
 				"ReadOnly":true,
 			},
-			"pid":
+			"frame":
+			{
+				"type":"Integer",
+				"min":0
+			},
+			"id":
 			{
 				"type":"Integer",
 				"min":0
@@ -501,48 +443,32 @@
 			"age":
 			{
 
-				"type":"Integer",
+				"type":"Float",
 				"min":0
 			},
-			"centroidX":
+			"centroid":
 			{
-				"type":"Float",
+				"type":"Point2D",
+				"min":0,
+				"max":1,
 				"min":0,
 				"max":1
 			},
-			"centroidY":
+			"velocity":
+			{
+				"type":"Point2D"
+			},
+			"orientation":
 			{
 				"type":"Float",
 				"min":0,
-				"max":1
+				"max":360
 			},
-			"velocityX":
+			"boundingRectCoord":
 			{
-				"type":"Float",
-				"min":-1,
-				"max":1
-			},
-			"velocityY":
-			{
-				"type":"Float",
-				"min":-1,
-				"max":1
-			},
-			"depth":
-			{
-				"type":"Float",
+				"type":"Point2D",
 				"min":0,
-				"max":1
-			},
-			"boundingRectX":
-			{
-				"type":"Float",
-				"min":0,
-				"max":1
-			},
-			"boundingRectY":
-			{
-				"type":"Float",
+				"max":1,
 				"min":0,
 				"max":1
 			},
@@ -555,29 +481,22 @@
 			"boundingRectHeight":
 			{
 				"type":"Float",
-				"min":0,
-				"max":1
+				"min":0
 			},
-			"HighestX":
+			"boundingRectRotation":
 			{
 				"type":"Float",
 				"min":0,
-				"max":1
+				"max":360
 			},
-			"HighestY":
+			"Height":
 			{
 				"type":"Float",
-				"min":0,
-				"max":1
-			},
-			"HighestZ":
-			{
-				"type":"Float",
-				"min":0,
-				"max":1
+				"min":0
 			}
 		},
-		"Person 4":
+
+		"Object 4":
 		{
 			"type":"Container",
 
@@ -586,7 +505,12 @@
 				"type":"Boolean",
 				"ReadOnly":true,
 			},
-			"pid":
+			"frame":
+			{
+				"type":"Integer",
+				"min":0
+			},
+			"id":
 			{
 				"type":"Integer",
 				"min":0
@@ -599,48 +523,32 @@
 			"age":
 			{
 
-				"type":"Integer",
+				"type":"Float",
 				"min":0
 			},
-			"centroidX":
+			"centroid":
 			{
-				"type":"Float",
+				"type":"Point2D",
+				"min":0,
+				"max":1,
 				"min":0,
 				"max":1
 			},
-			"centroidY":
+			"velocity":
+			{
+				"type":"Point2D"
+			},
+			"orientation":
 			{
 				"type":"Float",
 				"min":0,
-				"max":1
+				"max":360
 			},
-			"velocityX":
+			"boundingRectCoord":
 			{
-				"type":"Float",
-				"min":-1,
-				"max":1
-			},
-			"velocityY":
-			{
-				"type":"Float",
-				"min":-1,
-				"max":1
-			},
-			"depth":
-			{
-				"type":"Float",
+				"type":"Point2D",
 				"min":0,
-				"max":1
-			},
-			"boundingRectX":
-			{
-				"type":"Float",
-				"min":0,
-				"max":1
-			},
-			"boundingRectY":
-			{
-				"type":"Float",
+				"max":1,
 				"min":0,
 				"max":1
 			},
@@ -653,26 +561,18 @@
 			"boundingRectHeight":
 			{
 				"type":"Float",
-				"min":0,
-				"max":1
+				"min":0
 			},
-			"HighestX":
+			"boundingRectRotation":
 			{
 				"type":"Float",
 				"min":0,
-				"max":1
+				"max":360
 			},
-			"HighestY":
+			"Height":
 			{
 				"type":"Float",
-				"min":0,
-				"max":1
-			},
-			"HighestZ":
-			{
-				"type":"Float",
-				"min":0,
-				"max":1
+				"min":0
 			}
 		}
 	}
