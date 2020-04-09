@@ -3,7 +3,7 @@
 	"type":"OSC",
 	"path":"Theoriz",
 	
-	"version":"2.0.0",
+	"version":"2.0.1",
 	"description":"Get tracking data from THEORIZ's Augmenta tracking system v2",
 	"url":"https://github.com/Theoriz/Augmenta-chataigne-module",
 	"downloadURL":"https://github.com/Theoriz/Augmenta-chataigne-module/archive/master.zip",
@@ -24,6 +24,10 @@
 				"Oldest":"oldest",
 				"Newest":"newest"
 			}
+		},
+		"Display Object Extra Data":
+		{
+			"type":"Boolean",
 		}	
 	},
 
@@ -173,6 +177,46 @@
 			{
 				"type":"Float",
 				"min":0
+			},
+
+			"Extra":
+			{
+
+				"type":"Container",
+
+				"frame":
+				{
+					"type":"Integer",
+					"min":0
+				},
+				"id":
+				{
+					"type":"Integer",
+					"min":0
+				},
+				"oid":
+				{
+					"type":"Integer",
+					"min":0
+				},
+				"highest":
+				{
+					"type":"Point2D",
+					"min":0,
+					"max":1,
+					"min":0,
+					"max":1
+				},
+				"distance":
+				{
+					"type":"Float",
+					"min":0
+				},
+				"reflectivity":
+				{
+					"type":"Float",
+					"min":0
+				}
 			}
 		},
 
@@ -253,6 +297,46 @@
 			{
 				"type":"Float",
 				"min":0
+			},
+
+			"Extra":
+			{
+
+				"type":"Container",
+
+				"frame":
+				{
+					"type":"Integer",
+					"min":0
+				},
+				"id":
+				{
+					"type":"Integer",
+					"min":0
+				},
+				"oid":
+				{
+					"type":"Integer",
+					"min":0
+				},
+				"highest":
+				{
+					"type":"Point2D",
+					"min":0,
+					"max":1,
+					"min":0,
+					"max":1
+				},
+				"distance":
+				{
+					"type":"Float",
+					"min":0
+				},
+				"reflectivity":
+				{
+					"type":"Float",
+					"min":0
+				}
 			}
 		},
 
@@ -333,6 +417,46 @@
 			{
 				"type":"Float",
 				"min":0
+			},
+
+			"Extra":
+			{
+
+				"type":"Container",
+
+				"frame":
+				{
+					"type":"Integer",
+					"min":0
+				},
+				"id":
+				{
+					"type":"Integer",
+					"min":0
+				},
+				"oid":
+				{
+					"type":"Integer",
+					"min":0
+				},
+				"highest":
+				{
+					"type":"Point2D",
+					"min":0,
+					"max":1,
+					"min":0,
+					"max":1
+				},
+				"distance":
+				{
+					"type":"Float",
+					"min":0
+				},
+				"reflectivity":
+				{
+					"type":"Float",
+					"min":0
+				}
 			}
 		},
 		
@@ -413,6 +537,46 @@
 			{
 				"type":"Float",
 				"min":0
+			},
+
+			"Extra":
+			{
+
+				"type":"Container",
+
+				"frame":
+				{
+					"type":"Integer",
+					"min":0
+				},
+				"id":
+				{
+					"type":"Integer",
+					"min":0
+				},
+				"oid":
+				{
+					"type":"Integer",
+					"min":0
+				},
+				"highest":
+				{
+					"type":"Point2D",
+					"min":0,
+					"max":1,
+					"min":0,
+					"max":1
+				},
+				"distance":
+				{
+					"type":"Float",
+					"min":0
+				},
+				"reflectivity":
+				{
+					"type":"Float",
+					"min":0
+				}
 			}
 		},
 
@@ -493,6 +657,46 @@
 			{
 				"type":"Float",
 				"min":0
+			},
+
+			"Extra":
+			{
+
+				"type":"Container",
+
+				"frame":
+				{
+					"type":"Integer",
+					"min":0
+				},
+				"id":
+				{
+					"type":"Integer",
+					"min":0
+				},
+				"oid":
+				{
+					"type":"Integer",
+					"min":0
+				},
+				"highest":
+				{
+					"type":"Point2D",
+					"min":0,
+					"max":1,
+					"min":0,
+					"max":1
+				},
+				"distance":
+				{
+					"type":"Float",
+					"min":0
+				},
+				"reflectivity":
+				{
+					"type":"Float",
+					"min":0
+				}
 			}
 		},
 
@@ -573,6 +777,46 @@
 			{
 				"type":"Float",
 				"min":0
+			},
+
+			"Extra":
+			{
+
+				"type":"Container",
+
+				"frame":
+				{
+					"type":"Integer",
+					"min":0
+				},
+				"id":
+				{
+					"type":"Integer",
+					"min":0
+				},
+				"oid":
+				{
+					"type":"Integer",
+					"min":0
+				},
+				"highest":
+				{
+					"type":"Point2D",
+					"min":0,
+					"max":1,
+					"min":0,
+					"max":1
+				},
+				"distance":
+				{
+					"type":"Float",
+					"min":0
+				},
+				"reflectivity":
+				{
+					"type":"Float",
+					"min":0
+				}
 			}
 		}
 	}
