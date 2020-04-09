@@ -178,19 +178,8 @@ function getNewestId(args)
 {
 	if(local.values.scene.objectCount.get() > 0)
 	{
-		if(local.values.scene.objectCount.get() == 1)
-		{
-			// Newest is the only object
-			return 0;
-		} else if (local.values.scene.objectCount.get() == 2)
-		{
-			// Newest is the second object
-			return 1;
-		} else if (local.values.scene.objectCount.get() > 2)
-		{
-			// TODO : detect which one is newest
-			return 2;
-		}
+		// Newest is last id of the scene so newest oid is objectCount-1
+		return local.values.scene.objectCount.get() - 1;
 
 	} else
 	{
