@@ -27,7 +27,7 @@
 		},
 		"Display Object Extra Data":
 		{
-			"type":"Boolean",
+			"type":"Boolean"
 		}	
 	},
 
@@ -36,7 +36,7 @@
 		"OSC Input":
 		{
 			"localPort":12000,
-			"local":false,
+			"local":false
 		}	
 	},
 
@@ -81,18 +81,18 @@
 				"type":"Integer",
 				"min":0
 			},
-			"videoOutPixelHeight":
+			"videoOutPixelheight":
 			{
 				"type":"Integer",
 				"min":0
 			},
 			"videoOutCoord":
 			{
-				"type":"Point2D",
+				"type":"Point2D"
 			},
 			"SceneOutCoord":
 			{
-				"type":"Point2D",
+				"type":"Point2D"
 			}
 		},
 
@@ -103,7 +103,7 @@
 			"hasData":
 			{
 				"type":"Boolean",
-				"ReadOnly":true,
+				"ReadOnly":true
 			},
 			"frame":
 			{
@@ -165,7 +165,7 @@
 				"min":0,
 				"max":360
 			},
-			"Height":
+			"height":
 			{
 				"type":"Float",
 				"min":0
@@ -217,7 +217,7 @@
 			"hasData":
 			{
 				"type":"Boolean",
-				"ReadOnly":true,
+				"ReadOnly":true
 			},
 			"frame":
 			{
@@ -279,7 +279,7 @@
 				"min":0,
 				"max":360
 			},
-			"Height":
+			"height":
 			{
 				"type":"Float",
 				"min":0
@@ -331,7 +331,7 @@
 			"hasData":
 			{
 				"type":"Boolean",
-				"ReadOnly":true,
+				"ReadOnly":true
 			},
 			"frame":
 			{
@@ -393,7 +393,7 @@
 				"min":0,
 				"max":360
 			},
-			"Height":
+			"height":
 			{
 				"type":"Float",
 				"min":0
@@ -445,7 +445,7 @@
 			"hasData":
 			{
 				"type":"Boolean",
-				"ReadOnly":true,
+				"ReadOnly":true
 			},
 			"frame":
 			{
@@ -507,7 +507,7 @@
 				"min":0,
 				"max":360
 			},
-			"Height":
+			"height":
 			{
 				"type":"Float",
 				"min":0
@@ -559,7 +559,7 @@
 			"hasData":
 			{
 				"type":"Boolean",
-				"ReadOnly":true,
+				"ReadOnly":true
 			},
 			"frame":
 			{
@@ -621,7 +621,7 @@
 				"min":0,
 				"max":360
 			},
-			"Height":
+			"height":
 			{
 				"type":"Float",
 				"min":0
@@ -673,7 +673,7 @@
 			"hasData":
 			{
 				"type":"Boolean",
-				"ReadOnly":true,
+				"ReadOnly":true
 			},
 			"frame":
 			{
@@ -735,7 +735,7 @@
 				"min":0,
 				"max":360
 			},
-			"Height":
+			"height":
 			{
 				"type":"Float",
 				"min":0
