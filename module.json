@@ -5,8 +5,8 @@
 	
 	"version":"2.0.0",
 	"description":"Get tracking data from THEORIZ's Augmenta tracking system v2",
-	"url":"https://github.com/Theoriz/Augmenta-chataigne-module_v2",
-	"downloadURL":"https://github.com/Theoriz/Augmenta-chataigne-module_v2/archive/master.zip",
+	"url":"https://github.com/Theoriz/Augmenta-chataigne-module",
+	"downloadURL":"https://github.com/Theoriz/Augmenta-chataigne-module/archive/master.zip",
 	
 	"hasInput":true,
 	"hasOutput":false,
