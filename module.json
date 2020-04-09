@@ -3,7 +3,7 @@
 	"type":"OSC",
 	"path":"Theoriz",
 	
-	"version":"2.0.1",
+	"version":"2.0.2",
 	"description":"Get tracking data from THEORIZ's Augmenta tracking system v2",
 	"url":"https://github.com/Theoriz/Augmenta-chataigne-module",
 	"downloadURL":"https://github.com/Theoriz/Augmenta-chataigne-module/archive/master.zip",
@@ -89,14 +89,10 @@
 			"videoOutCoord":
 			{
 				"type":"Point2D",
-				"min":0,
-				"min":0
 			},
 			"SceneOutCoord":
 			{
 				"type":"Point2D",
-				"min":0,
-				"min":0
 			}
 		},
 
@@ -133,10 +129,8 @@
 			"centroid":
 			{
 				"type":"Point2D",
-				"min":0,
-				"max":1,
-				"min":0,
-				"max":1
+				"min":[0,0],
+				"max":[1,1]
 			},
 			"velocity":
 			{
@@ -151,10 +145,8 @@
 			"boundingRectCoord":
 			{
 				"type":"Point2D",
-				"min":0,
-				"max":1,
-				"min":0,
-				"max":1
+				"min":[0,0],
+				"max":[1,1]
 			},
 			"boundingRectWidth":
 			{
@@ -202,10 +194,8 @@
 				"highest":
 				{
 					"type":"Point2D",
-					"min":0,
-					"max":1,
-					"min":0,
-					"max":1
+					"min":[0,0],
+					"max":[1,1]
 				},
 				"distance":
 				{
@@ -253,10 +243,8 @@
 			"centroid":
 			{
 				"type":"Point2D",
-				"min":0,
-				"max":1,
-				"min":0,
-				"max":1
+				"min":[0,0],
+				"max":[1,1]
 			},
 			"velocity":
 			{
@@ -271,10 +259,8 @@
 			"boundingRectCoord":
 			{
 				"type":"Point2D",
-				"min":0,
-				"max":1,
-				"min":0,
-				"max":1
+				"min":[0,0],
+				"max":[1,1]
 			},
 			"boundingRectWidth":
 			{
@@ -322,10 +308,8 @@
 				"highest":
 				{
 					"type":"Point2D",
-					"min":0,
-					"max":1,
-					"min":0,
-					"max":1
+					"min":[0,0],
+					"max":[1,1]
 				},
 				"distance":
 				{
@@ -373,10 +357,8 @@
 			"centroid":
 			{
 				"type":"Point2D",
-				"min":0,
-				"max":1,
-				"min":0,
-				"max":1
+				"min":[0,0],
+				"max":[1,1]
 			},
 			"velocity":
 			{
@@ -391,10 +373,8 @@
 			"boundingRectCoord":
 			{
 				"type":"Point2D",
-				"min":0,
-				"max":1,
-				"min":0,
-				"max":1
+				"min":[0,0],
+				"max":[1,1]
 			},
 			"boundingRectWidth":
 			{
@@ -442,10 +422,8 @@
 				"highest":
 				{
 					"type":"Point2D",
-					"min":0,
-					"max":1,
-					"min":0,
-					"max":1
+					"min":[0,0],
+					"max":[1,1]
 				},
 				"distance":
 				{
@@ -493,10 +471,8 @@
 			"centroid":
 			{
 				"type":"Point2D",
-				"min":0,
-				"max":1,
-				"min":0,
-				"max":1
+				"min":[0,0],
+				"max":[1,1]
 			},
 			"velocity":
 			{
@@ -511,10 +487,8 @@
 			"boundingRectCoord":
 			{
 				"type":"Point2D",
-				"min":0,
-				"max":1,
-				"min":0,
-				"max":1
+				"min":[0,0],
+				"max":[1,1]
 			},
 			"boundingRectWidth":
 			{
@@ -562,10 +536,8 @@
 				"highest":
 				{
 					"type":"Point2D",
-					"min":0,
-					"max":1,
-					"min":0,
-					"max":1
+					"min":[0,0],
+					"max":[1,1]
 				},
 				"distance":
 				{
@@ -613,10 +585,8 @@
 			"centroid":
 			{
 				"type":"Point2D",
-				"min":0,
-				"max":1,
-				"min":0,
-				"max":1
+				"min":[0,0],
+				"max":[1,1]
 			},
 			"velocity":
 			{
@@ -631,10 +601,8 @@
 			"boundingRectCoord":
 			{
 				"type":"Point2D",
-				"min":0,
-				"max":1,
-				"min":0,
-				"max":1
+				"min":[0,0],
+				"max":[1,1]
 			},
 			"boundingRectWidth":
 			{
@@ -682,10 +650,8 @@
 				"highest":
 				{
 					"type":"Point2D",
-					"min":0,
-					"max":1,
-					"min":0,
-					"max":1
+					"min":[0,0],
+					"max":[1,1]
 				},
 				"distance":
 				{
@@ -733,10 +699,8 @@
 			"centroid":
 			{
 				"type":"Point2D",
-				"min":0,
-				"max":1,
-				"min":0,
-				"max":1
+				"min":[0,0],
+				"max":[1,1]
 			},
 			"velocity":
 			{
@@ -751,10 +715,8 @@
 			"boundingRectCoord":
 			{
 				"type":"Point2D",
-				"min":0,
-				"max":1,
-				"min":0,
-				"max":1
+				"min":[0,0],
+				"max":[1,1]
 			},
 			"boundingRectWidth":
 			{
@@ -802,10 +764,8 @@
 				"highest":
 				{
 					"type":"Point2D",
-					"min":0,
-					"max":1,
-					"min":0,
-					"max":1
+					"min":[0,0],
+					"max":[1,1]
 				},
 				"distance":
 				{
