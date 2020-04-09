@@ -230,9 +230,9 @@ function setAugmentaExtraObject(object, args)
 	object.frame.set(args[0]);
 	object.id.set(args[1]);
 	object.oid.set(args[2]);
-	//object.highest.set(args[3],args[4]);
-	//object.distance.set(args[5]);
-	//object.reflectivity.set(args[6]);
+	object.highest.set(args[3],args[4]);
+	object.distance.set(args[5]);
+	object.reflectivity.set(args[6]);
 }
 
 function resetAugmentaObject(object)
