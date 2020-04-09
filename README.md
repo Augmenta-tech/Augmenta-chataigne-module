@@ -1,5 +1,5 @@
-﻿Augmenta Chataigne module v2
-=============================
+﻿Augmenta Chataigne module
+==========================
 
 A [Chataigne][] module maintained by [Théoriz studio][]
 
@@ -31,6 +31,8 @@ In [Chataigne][], the module will appear in a Theoriz submenu alongside the othe
 
 Documentation
 -------------
+
+This module receives protocol in V2 version, please check this repository : https://github.com/Theoriz/Augmenta-chataigne-module_v1_legacy
 
 Data protocol is here : https://github.com/Theoriz/Augmenta/wiki
 
