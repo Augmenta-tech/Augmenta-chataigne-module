@@ -71,7 +71,7 @@ function oscEvent(address,args)
 		// Update objects
 		for(var i = 0 ; i < maxObjectsDisplayed ; i++)
 		{
-			 if(args[2] == i) // //args[2] = oid
+			 if(args[2] == i) //args[2] = oid
 			 {
  				setAugmentaObject(local.values.getChild("object" + i), args);
 			 }
@@ -95,7 +95,7 @@ function oscEvent(address,args)
 		// Update objects
 		for(var i = 0 ; i < maxObjectsDisplayed ; i++)
 		{
-			 if(args[2] == i) // //args[2] = oid
+			 if(args[2] == i) //args[2] = oid
 			 {
  				local.values.getChild("object" + i).setCollapsed(false);
  				setAugmentaObject(local.values.getChild("object" + i), args);
@@ -118,7 +118,7 @@ function oscEvent(address,args)
 		
 		for(var i = 0 ; i < maxObjectsDisplayed ; i++)
 		{
-			 if(args[2] == i) // //args[2] = oid
+			 if(args[2] == i) //args[2] = oid
 			 {
  				local.values.getChild("object" + i).setCollapsed(true);
  				resetAugmentaObject(local.values.getChild("object" + i), args);
@@ -141,9 +141,9 @@ function oscEvent(address,args)
 		// Update objects
 		for(var i = 0 ; i < maxObjectsDisplayed ; i++)
 		{
-			 if(args[2] == i) // //args[2] = oid
+			 if(args[2] == i) //args[2] = oid
 			 {
- 				setAugmentaExtraObject(local.values.getChild("object" + i), args);
+ 				setAugmentaExtraObject(local.values.getChild("object" + i).extra, args);
 			 }
 		}
 
@@ -151,24 +151,24 @@ function oscEvent(address,args)
 		// Oldest is always oid = 0 if algo is correctly implemented
 		if(local.parameters.singleObjectMode.getData() == "oldest" && args[2] == 0)
 		{
-			setAugmentaExtraObject(local.values.singleObject, args);
+			setAugmentaExtraObject(local.values.singleObject.extra, args);
 
 		} else if(local.parameters.singleObjectMode.getData() == "newest" && args[2] == getNewestId())
 		{
 
-			setAugmentaExtraObject(local.values.singleObject, args);
+			setAugmentaExtraObject(local.values.singleObject.extra, args);
 
 		}
 
 	} else if(address == "/object/enter/extra")
 	{
-		// Update objects
+		// Update objects;
 		for(var i = 0 ; i < maxObjectsDisplayed ; i++)
 		{
-			 if(args[2] == i) // //args[2] = oid
+			 if(args[2] == i) //args[2] = oid
 			 {
  				local.values.getChild("object" + i).setCollapsed(false);
- 				setAugmentaExtraObject(local.values.getChild("object" + i), args);
+ 				setAugmentaExtraObject(local.values.getChild("object" + i).extra, args);
 			 }
 		}
 
@@ -176,22 +176,22 @@ function oscEvent(address,args)
 		// Oldest is always oid = 0 if algo is correctly implemented
 		if(local.parameters.singleObjectMode.getData() == "oldest" && args[2] == 0)
 		{
-			setAugmentaExtraObject(local.values.singleObject, args);
+			setAugmentaExtraObject(local.values.singleObject.extra, args);
 
 		} else if(local.parameters.singleObjectMode.getData() == "newest" && args[2] == getNewestId())
 		{
-			setAugmentaExtraObject(local.values.singleObject, args);
+			setAugmentaExtraObject(local.values.singleObject.extra, args);
 		}
 
-	} else if(address == "/object/leave")
+	} else if(address == "/object/leave/extra")
 	{
 		
 		for(var i = 0 ; i < maxObjectsDisplayed ; i++)
 		{
-			 if(args[2] == i) // //args[2] = oid
+			 if(args[2] == i) //args[2] = oid
 			 {
  				local.values.getChild("object" + i).setCollapsed(true);
- 				resetAugmentaExtraObject(local.values.getChild("object" + i), args);
+ 				resetAugmentaExtraObject(local.values.getChild("object" + i).extra, args);
 			 }
 		}
 
@@ -199,11 +199,11 @@ function oscEvent(address,args)
 		// Oldest is always oid = 0 if algo is correctly implemented
 		if(local.parameters.singleObjectMode.getData() == "oldest" && args[2] == 0)
 		{
-			resetAugmentaExtraObject(local.values.singleObject);
+			resetAugmentaExtraObject(local.values.singleObject.extra);
 
 		} else if(local.parameters.singleObjectMode.getData() == "newest" && args[2] == getNewestId())
 		{
-			resetAugmentaExtraObject(local.values.singleObject);
+			resetAugmentaExtraObject(local.values.singleObject.extra);
 		}
 	}
 }
@@ -230,9 +230,9 @@ function setAugmentaExtraObject(object, args)
 	object.frame.set(args[0]);
 	object.id.set(args[1]);
 	object.oid.set(args[2]);
-	object.highest.set(args[3],args[4]);
-	object.distance.set(args[5]);
-	object.reflectivity.set(args[6]);
+	//object.highest.set(args[3],args[4]);
+	//object.distance.set(args[5]);
+	//object.reflectivity.set(args[6]);
 }
 
 function resetAugmentaObject(object)
