@@ -79,11 +79,11 @@ function oscEvent(address,args)
 
 		// Update Oldest and newest
 		// Oldest is always oid = 0 if algo is correctly implemented
-		if(local.parameters.singleObjectMode.getData() == "oldest" && args[2] == 0)
+		if(local.parameters.singleObjectMode.get() == "oldest" && args[2] == 0)
 		{
 			setAugmentaObject(local.values.singleObject, args);
 
-		} else if(local.parameters.singleObjectMode.getData() == "newest" && args[2] == getNewestId())
+		} else if(local.parameters.singleObjectMode.get() == "newest" && args[2] == getNewestId())
 		{
 
 			setAugmentaObject(local.values.singleObject, args);
@@ -104,11 +104,11 @@ function oscEvent(address,args)
 
 		// Update Oldest and newest
 		// Oldest is always oid = 0 if algo is correctly implemented
-		if(local.parameters.singleObjectMode.getData() == "oldest" && args[2] == 0)
+		if(local.parameters.singleObjectMode.get() == "oldest" && args[2] == 0)
 		{
 			setAugmentaObject(local.values.singleObject, args);
 
-		} else if(local.parameters.singleObjectMode.getData() == "newest" && args[2] == getNewestId())
+		} else if(local.parameters.singleObjectMode.get() == "newest" && args[2] == getNewestId())
 		{
 			setAugmentaObject(local.values.singleObject, args);
 		}
@@ -127,11 +127,11 @@ function oscEvent(address,args)
 
 		// Reset Oldest and newest
 		// Oldest is always oid = 0 if algo is correctly implemented
-		if(local.parameters.singleObjectMode.getData() == "oldest" && args[2] == 0)
+		if(local.parameters.singleObjectMode.get() == "oldest" && args[2] == 0)
 		{
 			resetAugmentaObject(local.values.singleObject);
 
-		} else if(local.parameters.singleObjectMode.getData() == "newest" && args[2] == getNewestId())
+		} else if(local.parameters.singleObjectMode.get() == "newest" && args[2] == getNewestId())
 		{
 			resetAugmentaObject(local.values.singleObject);
 		}
@@ -149,11 +149,11 @@ function oscEvent(address,args)
 
 		// Update Oldest and newest
 		// Oldest is always oid = 0 if algo is correctly implemented
-		if(local.parameters.singleObjectMode.getData() == "oldest" && args[2] == 0)
+		if(local.parameters.singleObjectMode.get() == "oldest" && args[2] == 0)
 		{
 			setAugmentaExtraObject(local.values.singleObject.extra, args);
 
-		} else if(local.parameters.singleObjectMode.getData() == "newest" && args[2] == getNewestId())
+		} else if(local.parameters.singleObjectMode.get() == "newest" && args[2] == getNewestId())
 		{
 
 			setAugmentaExtraObject(local.values.singleObject.extra, args);
@@ -174,11 +174,11 @@ function oscEvent(address,args)
 
 		// Update Oldest and newest
 		// Oldest is always oid = 0 if algo is correctly implemented
-		if(local.parameters.singleObjectMode.getData() == "oldest" && args[2] == 0)
+		if(local.parameters.singleObjectMode.get() == "oldest" && args[2] == 0)
 		{
 			setAugmentaExtraObject(local.values.singleObject.extra, args);
 
-		} else if(local.parameters.singleObjectMode.getData() == "newest" && args[2] == getNewestId())
+		} else if(local.parameters.singleObjectMode.get() == "newest" && args[2] == getNewestId())
 		{
 			setAugmentaExtraObject(local.values.singleObject.extra, args);
 		}
@@ -197,11 +197,11 @@ function oscEvent(address,args)
 
 		// Reset Oldest and newest
 		// Oldest is always oid = 0 if algo is correctly implemented
-		if(local.parameters.singleObjectMode.getData() == "oldest" && args[2] == 0)
+		if(local.parameters.singleObjectMode.get() == "oldest" && args[2] == 0)
 		{
 			resetAugmentaExtraObject(local.values.singleObject.extra);
 
-		} else if(local.parameters.singleObjectMode.getData() == "newest" && args[2] == getNewestId())
+		} else if(local.parameters.singleObjectMode.get() == "newest" && args[2] == getNewestId())
 		{
 			resetAugmentaExtraObject(local.values.singleObject.extra);
 		}

@@ -1,9 +1,9 @@
 {
-	"name":"Augmenta",
+	"name":"Augmenta (v2)",
 	"type":"OSC",
 	"path":"Theoriz",
 	
-	"version":"2.0.4",
+	"version":"2.0.5",
 	"description":"Get tracking data from THEORIZ's Augmenta tracking system v2",
 	"url":"https://github.com/Theoriz/Augmenta-chataigne-module",
 	"downloadURL":"https://github.com/Theoriz/Augmenta-chataigne-module/archive/master.zip",
