@@ -4,7 +4,7 @@ Augmenta protocol :
 
 https://github.com/Theoriz/Augmenta/wiki
 
-This code has been tested on Chataigne 1.6.0
+This code has been tested on Chataigne 1.7.0+
 
 */
 
@@ -17,6 +17,7 @@ function init()
 	local.values.singleObject.setCollapsed(true);
 	local.values.fusion.setCollapsed(true);
 	local.scripts.setCollapsed(true);
+	local.scripts.getChild("Augmenta").enableLog.set(true);
 
 	for(var i = 0 ; i < maxObjectsDisplayed ; i++)
 	{	
@@ -205,6 +206,9 @@ function oscEvent(address,args)
 		{
 			resetAugmentaExtraObject(local.values.singleObject.extra);
 		}
+	} else if(address == "/au/scene")
+	{
+		script.logWarning(" : This module can display only V2 protocol data, not V1");
 	}
 }
 
