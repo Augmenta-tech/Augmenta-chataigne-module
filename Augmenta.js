@@ -206,6 +206,10 @@ function oscEvent(address,args)
 		{
 			resetAugmentaExtraObject(local.values.singleObject.extra);
 		}
+	} else if(address == "/fusion")
+	{
+		setAugmentaFusion(local.values.fusion, args);
+
 	} else if(address == "/au/scene")
 	{
 		script.logWarning(" : This module can display only V2 protocol data, not V1");
@@ -276,12 +280,12 @@ function setAugmentaScene(scene, args)
 
 function setAugmentaFusion(fusion, args)
 {
-	scene.videoOutPixelWidth.set(args[0]);
-	scene.videoOutPixelHeight.set(args[1]);
-	scene.videoOutCoord.x.set(args[2]);
-	scene.videoOutCoord.y.set(args[2]);
-	scene.sceneCoord.x.set(args[4]);
-	scene.sceneCoord.y.set(args[5]);
+	fusion.videoOutOffset.x.set(args[0]);
+	fusion.videoOutOffset.y.set(args[1]);
+	fusion.videoOutSize.x.set(args[2]);
+	fusion.videoOutSize.y.set(args[3]);
+	fusion.videoOutWidthInPixels.set(args[4]);
+	fusion.videoOutHeightInPixels.set(args[5]);
 }
 
 function getNewestId(args)
