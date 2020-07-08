@@ -280,10 +280,8 @@ function setAugmentaScene(scene, args)
 
 function setAugmentaFusion(fusion, args)
 {
-	fusion.videoOutOffset.x.set(args[0]);
-	fusion.videoOutOffset.y.set(args[1]);
-	fusion.videoOutSize.x.set(args[2]);
-	fusion.videoOutSize.y.set(args[3]);
+	fusion.videoOutOffset.set(args[0],args[1]);
+	fusion.videoOutSize.set(args[2],args[3]);
 	fusion.videoOutWidthInPixels.set(args[4]);
 	fusion.videoOutHeightInPixels.set(args[5]);
 }
