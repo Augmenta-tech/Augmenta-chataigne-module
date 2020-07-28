@@ -4,7 +4,7 @@ Augmenta protocol :
 
 https://github.com/Theoriz/Augmenta/wiki
 
-This code has been tested on Chataigne 1.7.0+
+This code has been tested on Chataigne 1.7.5+
 
 */
 
@@ -13,9 +13,14 @@ var maxObjectsDisplayed = 5;
 
 function init()
 {
+	local.parameters.oscOutputs.setCollapsed(true);
 	local.parameters.pass_through.setCollapsed(true);
 	local.values.singleObject.setCollapsed(true);
 	local.values.fusion.setCollapsed(true);
+	local.values.info.setCollapsed(true);
+	local.values.info.node.setCollapsed(true);
+	local.values.info.node.sensor.setCollapsed(true);
+	local.values.info.node.debug.setCollapsed(true);
 	local.scripts.setCollapsed(true);
 	local.scripts.getChild("Augmenta").enableLog.set(true);
 
@@ -23,10 +28,13 @@ function init()
 	{	
 		local.values.getChild("object" + i).setCollapsed(true);
 	}
+
+	local.parameters.oscOutputs.enabled.set(false);
 }
 
 function moduleParameterChanged(param)
 {
+
 	if(param.is(local.parameters.singleObjectMode)) {
 
 		if(local.parameters.singleObjectMode.get() == "none")
@@ -56,6 +64,33 @@ function moduleParameterChanged(param)
  				local.values.getChild("object"+i).getChild("Extra").setCollapsed(true);
 			}
 		}
+	}
+}
+
+function moduleValueChanged(value)
+{
+	if(value.is(local.values.info.requestInfo))
+	{
+		// Activate OSC Output
+		local.parameters.oscOutputs.enabled.set(true);
+
+		// Detect computer's IP
+
+		var ipArray = util.getIPs();
+		var ipToSend;
+
+		for (var i = 0; i < ipArray.length ; i++) {
+			
+			if(ipArray[i].startsWith("192"))
+			{
+				ipToSend = ipArray[i];
+			}
+		}
+
+		// Request Info
+		script.log("Requesting /info to be sent to (should be this computer Ip) : ",ipToSend);
+		// /info <serverIp:string> <ControlRemotePort:int> <version:int> sent to remoteIp:ControlRemotePort
+		local.send("/info", ipToSend, local.parameters.oscInput.localPort.get(), 2);
 	}
 }
 
@@ -210,7 +245,12 @@ function oscEvent(address,args)
 	{
 		setAugmentaFusion(local.values.fusion, args);
 
-	} else if(address == "/au/scene")
+	} else if(address.startsWith("/info"))
+	{
+		setAugmentaInfo(address, args);
+	}
+
+	else if(address == "/au/scene")
 	{
 		script.logWarning(" : This module can display only V2 protocol data, not V1");
 	}
@@ -270,6 +310,104 @@ function resetAugmentaExtraObject(object)
 	object.reflectivity.set(0);
 }
 
+function setAugmentaInfo(address, args)
+{
+	var info = local.values.info;
+
+	if(address == "/info/name")
+	{
+		info.sourceName.set(args[0]);
+
+	} else if(address == "/info/tags")
+	{
+		info.tags.set(args[0]);
+
+	} else if(address == "/info/type")
+	{
+		info.sourceType.set(args[0]);
+
+	} else if(address == "/info/mac")
+	{
+		info.macAddress.set(args[0]);
+		
+	} else if(address == "/info/ip")
+	{
+		info.ipAddress.set(args[0]);
+		
+	} else if(address == "/info/version")
+	{
+		info.version.set(args[0]);
+		
+	} else if(address == "/info/currentFile")
+	{
+		info.currentFile.set(args[0]);
+		
+	} else if(address == "/info/protocolAvailable")
+	{
+		info.protocolsAvailable.set(args[0]);
+		
+	} else if(address == "/info/sensor/type")
+	{
+		info.node.sensor.sensorType.set(args[0]);
+		
+	} else if(address == "/info/sensor/brand")
+	{
+		info.node.sensor.brand.set(args[0]);
+		
+	} else if(address == "/info/sensor/name")
+	{
+		info.node.sensor.brandName.set(args[0]);
+		
+	} else if(address == "/info/sensor/hfov")
+	{
+		info.node.sensor.hfov.set(args[0]);
+		
+	} else if(address == "/info/sensor/vfov")
+	{
+		info.node.sensor.vfov.set(args[0]);
+		
+	} else if(address == "/info/sensor/position")
+	{
+		info.node.sensor.position.set(args[0],args[1],args[2]);
+		
+	} else if(address == "/info/sensor/orientation")
+	{
+		info.node.sensor.orientation.set(args[0],args[1],args[2]);
+		
+	} else if(address == "/info/floorMode")
+	{
+		info.node.floorMode.set(args[0]);
+		
+	} else if(address == "/info/floorState")
+	{
+		info.node.floorState.set(args[0]);
+		
+	} else if(address == "/info/backgroundMode")
+	{
+		info.node.backgroundMode.set(args[0]);
+		
+	} else if(address == "/info/debug/pipeName")
+	{
+		info.node.debug.pipeName.set(args[0]);
+		
+	} else if(address == "/info/debug/sensor")
+	{
+		info.node.debug.sensor.set(arg[0]);
+		
+	} else if(address == "/info/debug/videoPipe")
+	{
+		info.node.debug.videoPipe.set(args[0]);
+		
+	} else if(address == "/info/debug/trackingPipe")
+	{
+		info.node.debug.trackingPipe.set(args[0]);
+		
+	} else if(address == "/info/debug/pid")
+	{
+		info.node.debug.processPID.set(args[0]);
+	}
+}
+
 function setAugmentaScene(scene, args)
 {
 	scene.frame.set(args[0]);
@@ -299,3 +437,4 @@ function getNewestId(args)
 		return -1;
 	}
 }
+  
