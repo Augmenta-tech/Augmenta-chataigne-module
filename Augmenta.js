@@ -29,7 +29,7 @@ function init()
 		local.values.getChild("object" + i).setCollapsed(true);
 	}
 
-	local.parameters.oscOutputs.enabled.set(false);
+	local.parameters.oscOutputs.enabled.set(false); // does not always work : strange
 }
 
 function moduleParameterChanged(param)
@@ -91,6 +91,7 @@ function moduleValueChanged(value)
 		script.log("Requesting /info to be sent to (should be this computer Ip) : ",ipToSend);
 		// /info <serverIp:string> <ControlRemotePort:int> <version:int> sent to remoteIp:ControlRemotePort
 		local.send("/info", ipToSend, local.parameters.oscInput.localPort.get(), 2);
+		resetAugmentaInfo();
 	}
 }
 
@@ -310,6 +311,34 @@ function resetAugmentaExtraObject(object)
 	object.reflectivity.set(0);
 }
 
+function resetAugmentaInfo()
+{
+	var info = local.values.info;
+
+	info.sourceName.set("");
+	info.tags.set("");
+	info.sourceType.set("");
+	info.macAddress.set("");
+	info.ipAddress.set("");
+	info.version.set("");
+	info.currentFile.set("");
+	info.protocolsAvailable.set("");
+	info.node.sensor.sensorType.set("");
+	info.node.sensor.brand.set("");
+	info.node.sensor.brandName.set("");
+	info.node.sensor.fov.set(0,0);
+	info.node.sensor.position.set(0,0,0);
+	info.node.sensor.orientation.set(0,0,0);
+	info.node.floorMode.set("");
+	info.node.floorState.set("");
+	info.node.backgroundMode.set("");
+	info.node.debug.pipeName.set("");
+	info.node.debug.sensor.set("");
+	info.node.debug.videoPipe.set("");
+	info.node.debug.trackingPipe.set("");
+	info.node.debug.processPID.set(0);
+}
+
 function setAugmentaInfo(address, args)
 {
 	var info = local.values.info;
@@ -437,4 +466,3 @@ function getNewestId(args)
 		return -1;
 	}
 }
-  

@@ -1,10 +1,10 @@
 {
-	"name":"Augmenta (v2)",
+	"name":"Augmenta",
 	"type":"OSC",
 	"path":"Theoriz",
 	
-	"version":"2.1.2",
-	"description":"Get tracking data from THEORIZ's Augmenta tracking system v2",
+	"version":"2.1.3",
+	"description":"Get tracking data from THEORIZ's Augmenta tracking system. www.augmenta-tech.com",
 	"url":"https://github.com/Theoriz/Augmenta-chataigne-module",
 	"downloadURL":"https://github.com/Theoriz/Augmenta-chataigne-module/archive/master.zip",
 	
@@ -115,13 +115,9 @@
 					{
 						"type":"String"
 					},
-					"hFov":
+					"fov":
 					{
-						"type:":"float"
-					},
-					"vFov":
-					{
-						"type":"float"
+						"type":"Point2D"
 					},
 					"position":
 					{
