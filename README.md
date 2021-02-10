@@ -16,12 +16,17 @@ or
 ```
 git clone https://github.com/Theoriz/Augmenta-chataigne-module
 ```
-
+ 
 in the following directory
 
 - Mac OSX : /Users/Username/Documents/Chataigne/modules
 - Windows : C:\Users\Username\Documents\Chataigne\modules
 - Linux   : /home/Username/Chataigne/modules
+
+or
+
+Click on code, then "Download ZIP", and unzip it into an "Augmenta" folder in the modules directory
+
 
 Then restart [Chataigne][]
 
