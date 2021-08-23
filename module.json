@@ -3,7 +3,7 @@
 	"type":"OSC",
 	"path":"Theoriz",
 	
-	"version":"2.1.4",
+	"version":"2.1.5",
 	"description":"Get tracking data from THEORIZ's Augmenta tracking system. www.augmenta-tech.com",
 	"url":"https://github.com/Theoriz/Augmenta-chataigne-module",
 	"downloadURL":"https://github.com/Theoriz/Augmenta-chataigne-module/archive/master.zip",
