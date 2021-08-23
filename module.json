@@ -11,7 +11,7 @@
 	"hasInput":true,
 	"hasOutput":true,
 	"hideDefaultCommands":true,
-	"hideDefaultParameters": ["autoRange", "autoFeedback"],
+	"hideDefaultParameters": ["autoRange", "autoFeedback", "useHierarchy", "colorSendMode"],
 
 	"parameters":
 	{
@@ -43,7 +43,7 @@
 
 			"OSC Output":
 			{
-				"local":false,
+				"local":true,
 				"RemoteHost":"192.168.1.42",
 				"RemotePort":36278
 			}
@@ -107,11 +107,11 @@
 					{
 						"type":"String"
 					},
-					"brand":
+					"sensor brand":
 					{
 						"type":"String"
 					},
-					"brand name":
+					"sensor name":
 					{
 						"type":"String"
 					},

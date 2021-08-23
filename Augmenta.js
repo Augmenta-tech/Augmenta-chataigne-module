@@ -324,8 +324,8 @@ function resetAugmentaInfo()
 	info.currentFile.set("");
 	info.protocolsAvailable.set("");
 	info.node.sensor.sensorType.set("");
-	info.node.sensor.brand.set("");
-	info.node.sensor.brandName.set("");
+	info.node.sensor.sensorBrand.set("");
+	info.node.sensor.sensorName.set("");
 	info.node.sensor.fov.set(0,0);
 	info.node.sensor.position.set(0,0,0);
 	info.node.sensor.orientation.set(0,0,0);
@@ -381,11 +381,11 @@ function setAugmentaInfo(address, args)
 		
 	} else if(address == "/info/sensor/brand")
 	{
-		info.node.sensor.brand.set(args[0]);
+		info.node.sensor.sensorBrand.set(args[0]);
 		
 	} else if(address == "/info/sensor/name")
 	{
-		info.node.sensor.brandName.set(args[0]);
+		info.node.sensor.sensorName.set(args[0]);
 		
 	} else if(address == "/info/sensor/hfov")
 	{
@@ -421,7 +421,7 @@ function setAugmentaInfo(address, args)
 		
 	} else if(address == "/info/debug/sensor")
 	{
-		info.node.debug.sensor.set(arg[0]);
+		info.node.debug.sensor.set(args[0]);
 		
 	} else if(address == "/info/debug/videoPipe")
 	{
