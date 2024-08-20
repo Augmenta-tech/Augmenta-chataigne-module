@@ -1,12 +1,12 @@
 {
-	"name":"Augmenta",
+	"name":"Augmenta OSC",
 	"type":"OSC",
-	"path":"Theoriz",
+	"path":"Augmenta",
 	
 	"version":"2.1.5",
-	"description":"Get tracking data from THEORIZ's Augmenta tracking system. www.augmenta-tech.com",
-	"url":"https://github.com/Theoriz/Augmenta-chataigne-module",
-	"downloadURL":"https://github.com/Theoriz/Augmenta-chataigne-module/archive/master.zip",
+	"description":"Get tracking data from Augmenta tracking system. https://augmenta.tech",
+	"url":"https://github.com/Augmenta-tech/Augmenta-chataigne-module",
+	"downloadURL":"https://github.com/Augmenta-tech/Augmenta-chataigne-module/archive/master.zip",
 	
 	"hasInput":true,
 	"hasOutput":true,
