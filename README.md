@@ -1,7 +1,7 @@
 ﻿Augmenta Chataigne module
 ==========================
 
-A [Chataigne][] module maintained by [Théoriz studio][]
+A [Chataigne][] module maintained by [Augmenta][]
 
 Install
 -------
@@ -14,7 +14,7 @@ Install
 or
 
 ```
-git clone https://github.com/Theoriz/Augmenta-chataigne-module
+git clone https://github.com/Augmenta-tech/Augmenta-chataigne-module
 ```
  
 in the following directory
@@ -63,5 +63,5 @@ Thanks to [BenKuper] for his kind support and his awesome open source software.
 
 [BenKuper]: https://github.com/benkuper
 [Chataigne]: https://benjamin.kuperberg.fr/chataigne/
-[Augmenta]: https://www.augmenta-tech.com/
+[Augmenta]: https://augmenta.tech/
 [Théoriz studio]: https://www.theoriz.com/
