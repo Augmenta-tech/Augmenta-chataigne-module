@@ -32,14 +32,12 @@ Then restart [Chataigne][]
 
 Use
 ---
-In [Chataigne][], the module will appear in a Theoriz submenu alongside the other modules.
+In [Chataigne][], the module will appear in an Augmenta submenu alongside the other modules.
 
 Documentation
 -------------
 
-This module receives protocol in V2 version, please check this repository : https://github.com/Theoriz/Augmenta-chataigne-module_v1_legacy
-
-Data protocol is here : https://github.com/Theoriz/Augmenta/wiki
+This module receives protocol in V2 version, please check this repository : https://github.com/Augmenta-tech/Augmenta-chataigne-module_v1_legacy
 
 Chataigne documentation is here : http://benjamin.kuperberg.fr/chataigne/docs
 
@@ -58,6 +56,8 @@ Thanks
 ------
 
 Thanks to [BenKuper] for his kind support and his awesome open source software.
+
+Thanks to [Théoriz studio]
 
 [Chataigne][] is opensource you can check it here : https://github.com/benkuper/Chataigne
 
